@@ -1,0 +1,29 @@
+{% extends "index.html" %}
+{% block title %}
+Payments
+{% endblock title %}
+
+{% block add %}
+<style>
+    .container{
+        padding: 10px 0 0 0;
+        box-shadow: aquamarine 0 0 10px;
+       
+        margin:40px 0 0 40px;
+        width:50%;
+    }
+</style>
+<form action="" method="POST">
+    {% csrf_token %}
+<div class="container text-center">
+       <h1> {{request.user}}</h1>
+        <br>
+      <textarea name="address"placeholder="address" class="form-control"id="" cols="15" rows="5"></textarea>
+      <input  type="number" name="phone" class="form-control pt-10" placeholder="phone" required>
+      <input type="number" name="pincode" class="form-control pt-3" placeholder="pincode" required>
+  <input type="submit" class="btn btn-success pt-3" value="submit">
+    
+</div>
+</form>
+
+{% endblock add %}

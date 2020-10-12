@@ -1,0 +1,63 @@
+
+{% extends "index.html" %}
+{% load static %}
+{% block title %}
+  Canteen
+{% endblock title %}
+{% block add %}
+<style>
+	.container{
+		width: 25%;
+		margin: 20px;
+		
+	}
+	body{
+		background: linear-gradient(#b3ffab,#dbff12);
+	}
+	.box-element{
+		padding: 20px;
+		border-radius: 4px;
+		box-shadow: rgb(202, 139, 139) 0 0 16px;
+		background-color: #fff;
+		
+	}
+	.product
+	{
+		border-radius: 0 0 4px 4px;
+	}
+	.thumbnail{
+		box-shadow: rgb(202, 139, 139) 0 0 10px;
+		width: 100%;
+		height: 200px;
+	}
+	.row{
+		margin-left: 30px;
+	}
+</style>
+<div class="row">
+
+{% for item in items %}
+  
+
+ <div class="container" >
+<!-- adding canteen items to websit -->
+ 
+<img class="thumbnail" src="{{item.image.url}}" alt="image">
+
+			<div class="box-element product">
+				<h6><strong>{{item.name}}</strong></h6>
+				<hr>
+
+				<button  class="btn btn-outline-secondary add-btn">Add to Cart</button>
+				<a class="btn btn-outline-success" href="{% url 'payments'%}">Buy</a>
+				<h4 style="display: inline-block; float: right"><strong>&#8377;{{item.price}}</strong></h4>
+
+			</div>
+ </div>
+  
+
+ {% endfor %}
+ </div>
+{% endblock  %}
+
+

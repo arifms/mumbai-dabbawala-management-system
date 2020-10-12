@@ -1,0 +1,46 @@
+{% extends "index.html" %}
+{% load static %}
+{% block title %}
+  Register
+ 
+{% endblock title %}
+<link rel="stylesheet" href="{% static 'register.css'%}">
+{% block add %}
+<style>
+  .container{
+    width: 50%;
+    margin-top: 40px;
+    
+    box-shadow: black 0 0 5px;
+    background:linear-gradient(rgb(211, 231, 184),orange);
+  }
+</style>
+<div>
+  <form action="" method="POST">
+    {% csrf_token %}
+    <div class="container text-center">
+      <h1>Register</h1>
+      <p>Please fill in this form to create an account.</p>
+      <hr>
+      <table>
+  {% for form in form %}
+  <tr>
+    <th>{{form.label}}</th>
+  <td>{{form}}</td>
+  </tr>
+  {% endfor %}
+</table>
+      
+      
+  
+      <button type="submit" class="btn btn-outline-warning">Register</button>
+    </div>
+
+  <p>{{form.errors}}</p>
+    <div class="container signin">
+      <p>Already have an account? <a href="{% url 'login'%}">Sign in</a>.</p>
+    </div>
+  </form>
+
+{% endblock add %}
+

@@ -1,0 +1,30 @@
+{% extends "index.html" %}
+{% block title %}
+  Add Dabba
+{% endblock title %}
+{% block add %}
+<style>
+  .container{
+    background: linear-gradient(#870000,#190a05);
+    color: blanchedalmond;
+    width: 60%;
+    margin-left: 50px;
+  }
+</style>
+<div class="container">
+  <form action="" method="POST">
+    {% csrf_token %}
+      <label for="Name">Name</label>
+      <input type="text" class="form-control" name="Name">
+      <br>
+      <label for="dabba">address pickup</label>
+      <input type="text"class="form-control" name="dabba">
+      <br>
+      <label for="dabbas">address delivery</label>
+      <input type="text"class="form-control" name="dabbas">
+      <br>
+      <input type="submit" class="btn btn-warning" value="add dabba">
+
+  </form>
+</div>
+{% endblock add %}

@@ -1,0 +1,61 @@
+{% extends "index.html" %}
+{% load static %}
+{% block title %}
+  cart Items
+{% endblock title %}
+{% block add %}
+<style>
+	.image{
+		height: 100px;
+		width: 200px;
+	}
+</style>
+
+<div class="container">
+
+				<a  class="btn btn-outline-dark" href="{% url 'canteen' %}">&#x2190; Continue Shopping</a>
+
+				<br>
+				<br>
+				<table class="table">
+					<tr>
+						<th><h5>Items: <strong>3</strong></h5></th>
+						<th><h5>Total:<strong> $42</strong></h5></th>
+						<th>
+							<a  style="float:right; margin:5px;" class="btn btn-success" href="{% url 'payments' %}">Checkout</a>
+						</th>
+					</tr>
+				</table>
+            <table class="table">
+                <tr aria-colspan="30">
+                    <th>Item</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                </tr>
+               {% for item in items %}
+			   <tr>
+				<td >
+					<img class="image" src="{{item.image.url}}" alt="">
+				</td>
+				<td>
+					{{item.price}}
+				</td>
+				<td>
+					{{item.quantity}}
+				</td>
+				<td>
+					400
+				</td>
+			</tr>
+			   {% endfor %}
+				
+            </table>
+			</div>
+
+			<br>
+			
+		</div>
+	</div>
+
+{% endblock add %}

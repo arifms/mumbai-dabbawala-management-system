@@ -1,0 +1,140 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>
+    {% block title %}
+    Home
+    {% endblock title %}
+    
+  </title>
+    
+    <style>
+body{
+  background-color: hsl(0, 0%, 98%);
+}
+.title
+{
+text-align: center;
+background-color: aquamarine;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+font-style: italic;
+font-size: xx-large;
+color: brown;
+}
+.details
+{
+    margin: 0;
+    padding-left: 35%;
+    
+}
+#cart-val{
+  
+  margin-left: auto;
+  margin-right: 45px;
+}
+#cart-icon{
+  
+	width:25px;
+	display: inline-block;
+	margin-left: 15px;
+}
+#cart-total{
+	display: block;
+	text-align: center;
+	color:#fff;
+	background-color: red;
+	width: 20px;
+	height: 25px;
+	border-radius: 50%;
+	font-size: 14px;
+}
+    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+  
+
+<body>
+  <div class="title">
+    Mumbai Dabbawala Management System
+  </div>
+    <nav class="navbar navbar-expand-lg navbar-light " style="background-color: blanchedalmond;">
+  <a class="navbar-brand" href="{% url 'dabbawala' %}">
+    DabbaWala
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'index'%}">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'canteen' %}">Canteen</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Pricing</a>
+      </li> 
+      
+      </li>
+    </ul>
+    <div id="cart-val"class="form-inline my-2 my-lg-0">
+      
+       {% if request.user.is_authenticated %}
+       <span>Hi, {{request.user}}</span>&ensp;
+       <span><a href="{% url 'logout'%}">logout</a></span>
+       {% else %}
+         <div class="btn btn-outline-secondary "><a href="{% url 'login' %}">login</a></div>
+       {% endif %}
+       
+      
+          
+             
+              
+             <a href="{% url 'cart' %}">
+               <img  id="cart-icon" src="{% static 'images/cart.png' %}">
+              </a>
+            <p id="cart-total">0</p>
+     
+         </div>
+  </div>
+</nav>
+{% block content %}
+{% endblock %}
+
+
+
+<!-- block for add and canteen -->
+{% block add %}
+<div class="jumbotron" >
+  <h1 class="display-4">Add, Dabba !</h1>
+  <p class="lead">This is where the dabba delivery possible.</p>
+  <hr class="my-4">
+  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="{% url 'adddabba' %}" role="button">Click Me! to Add :)</a>
+  </p>
+
+
+  <h1  style="float: right; padding-right: 40px;"class="display-4">Go to Canteen!</h1>
+  <br><br>
+
+  <hr class="my-4">
+  
+    <a style="float: right; padding-right: 70px;"class="btn btn-primary btn-lg" href="{% url 'canteen'%}" role="button">Welcome to Canteen!</a>
+  </p>
+  </div>
+
+  
+{% endblock add %}
+
+  
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+</body>
+</html>

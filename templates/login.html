@@ -1,0 +1,47 @@
+{% extends "index.html" %}
+{% block title %}
+loginPage
+{% endblock title %}
+{% block add %}
+<style>
+  .container{
+    padding: 50px 50px 30px 50px;
+    margin-top: 8%;
+    background:linear-gradient(aqua,rgb(238, 134, 134));
+    box-shadow: darkgoldenrod 0 0 10px;
+    width: 30%;
+    height: 50%;
+  }
+  body{
+    background: linear-gradient(#70e1f5,#ffd194);
+  }
+
+</style>
+<div class="container text-center">
+  <form action="" method="post">
+    {% csrf_token %}
+    <div class="pt-10">
+    
+    <input type="text" placeholder="username" class="form-control"name="username" required>
+    <br><br>
+    <input type="password"  class="form-control" placeholder="password" name="password" required>
+    
+    <br>
+    
+    <input class="btn btn-outline-success mt-2 btn-lg btn-block " type="submit" value="login">
+  <br>
+  <div>
+    {% for m in messages  %}
+    <b>{{m}}</b>
+      
+    {% endfor %}
+  </div>
+  <br>
+  <a href="{% url 'register'%}">create new account</a>
+  &ensp;&ensp;
+  <a href="{% url 'forgot' %}">forgot password</a>
+  </form>
+</div>
+  
+  </div>
+{% endblock add %}
